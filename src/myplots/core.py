@@ -132,6 +132,7 @@ def plot_parity(
     rmse_color="black",
     rmse_fontsize=5,
     rmse_unit="",
+    rmse_rescaler=1.0,
     rmse_format="3f",
     rmse_replace_exponential=True,
     rmse_exponential_times="times",
@@ -143,9 +144,11 @@ def plot_parity(
     """Plot parity of x and y with a dashed diagonal line."""
     ax.scatter(x, y, **kwargs)
     if add_xy:
+        lo = np.min([np.min(x), np.min(y)])
+        hi = np.max([np.max(x), np.max(y)])
         ax.plot(
-            [min(x), max(x)],
-            [min(y), max(y)],
+            [lo, hi],
+            [lo, hi],
             color=xy_color,
             label=xy_label,
             lw=xy_lw,
@@ -154,7 +157,7 @@ def plot_parity(
             zorder=xy_zorder,
         )
     if add_rmse:
-        rmse = np.sqrt(np.mean((x - y) ** 2))
+        rmse = np.sqrt(np.mean((x - y) ** 2)) * rmse_rescaler
         rmse_sanitized = f"{rmse:{rmse_format}}".replace("%", r"\%")
         if rmse_replace_exponential:
             rmse_sanitized = re.sub(
