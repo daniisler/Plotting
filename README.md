@@ -1,11 +1,11 @@
-# myplot
+# myplots
 
 Minimal plotting utilities for consistently formatted scientific matplotlib figures.
 
 ## Usage
 
 ```python
-import myplot as p
+import myplots as p
 
 p.use_style()
 fig, ax = p.new()
@@ -23,7 +23,7 @@ pip install -e .
 
 ```python
 import numpy as np
-import myplot as p
+import myplots as p
 
 # Apply global plotting style
 p.use_style(doc_fontsize=10, fig_width="single")

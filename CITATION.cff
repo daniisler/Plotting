@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: myplot
+title: myplots
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -15,7 +15,7 @@ authors:
     orcid: 'https://orcid.org/0009-0009-1776-7519'
 repository-code: 'https://github.com/daniisler/Plotting'
 abstract: >-
-  myplot is a Python package for consistent well-readable matplotlib figures for scientific plotting.
+  myplots is a Python package for consistent well-readable matplotlib figures for scientific plotting.
 keywords:
   - Python
   - plotting

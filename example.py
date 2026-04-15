@@ -1,6 +1,6 @@
 import numpy as np
 
-import myplot as p
+import myplots as p
 
 # Apply global plotting style
 p.use_style(doc_fontsize=10, fig_width="single")

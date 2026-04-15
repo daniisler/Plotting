@@ -1,4 +1,4 @@
-# src/myplot/__init__.py
+# src/myplots/__init__.py
 
 from .core import (
     annotate_subplots,

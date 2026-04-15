@@ -3,7 +3,7 @@ requires = ["uv_build >= 0.10.10, <0.11.0"]
 build-backend = "uv_build"
 
 [project]
-name = "myplot"
+name = "myplots"
 version = "0.1.0"
 description = "Lightweight plotting utilities for consistent well-readable matplotlib figures"
 readme = "README.md"
