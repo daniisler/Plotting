@@ -155,7 +155,6 @@ def plot_parity(
         )
     if add_rmse:
         rmse = np.sqrt(np.mean((x - y) ** 2))
-        rmse = 0.1
         rmse_sanitized = f"{rmse:{rmse_format}}".replace("%", r"\%")
         if rmse_replace_exponential:
             rmse_sanitized = re.sub(
