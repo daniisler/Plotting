@@ -133,7 +133,7 @@ def plot_parity(
     rmse_fontsize=5,
     rmse_unit="",
     rmse_rescaler=1.0,
-    rmse_format="3f",
+    rmse_format=".2f",
     rmse_replace_exponential=True,
     rmse_exponential_times="times",
     rmse_bbox=True,
