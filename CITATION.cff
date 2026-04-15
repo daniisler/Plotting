@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: myplot
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Daniel Alexander
+    family-names: Isler
+    email: isler@differ.nl
+    affiliation: DIFFER
+    orcid: 'https://orcid.org/0009-0009-1776-7519'
+repository-code: 'https://github.com/daniisler/myplot'
+abstract: >-
+  myplot is a Python package for consistent well-readable matplotlib figures for scientific plotting.
+keywords:
+  - Python
+  - plotting
+  - scientific
+license: MIT
