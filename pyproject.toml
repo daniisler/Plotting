@@ -29,6 +29,6 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/daniisler/myplot"
-Homepage = "https://github.com/daniisler/myplot"
-Issues = "https://github.com/daniisler/myplot/issues"
+Repository = "https://github.com/daniisler/Plotting"
+Homepage = "https://github.com/daniisler/Plotting"
+Issues = "https://github.com/daniisler/Plotting/issues"
