@@ -4,13 +4,35 @@ import string
 import matplotlib.pyplot as plt
 import numpy as np
 
+from .style import _compute_figsize
+
 # ============================================================
 # CORE FIGURE HELPERS
 # ============================================================
 
 
-def new(nrows=1, ncols=1, sharex=False, sharey=False, figsize=None, **kwargs):
+def new(
+    nrows=1,
+    ncols=1,
+    sharex=False,
+    sharey=False,
+    figsize=None,
+    aspect=0.75,
+    fig_width="single",
+    scale_multi_cols=0.8,
+    **kwargs,
+):
     """Create a new figure with consistent defaults."""
+    if figsize is None:
+        # Get figure size
+        figsize = _compute_figsize(
+            nrows=nrows,
+            ncols=ncols,
+            aspect=aspect,
+            fig_width=fig_width,
+            scale_multi_cols=scale_multi_cols,
+        )
+
     fig, axs = plt.subplots(
         nrows,
         ncols,
