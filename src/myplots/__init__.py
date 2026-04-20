@@ -18,6 +18,6 @@ from .core import (
     scatter,
     show,
 )
-from .style import use_style
+from .style import _compute_figsize, get_colors, use_style
 
 __version__ = "0.1.0"

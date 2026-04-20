@@ -47,6 +47,30 @@ def _compute_figsize(
     return width_in, height_in
 
 
+def get_colors():
+    """Get a list of colors for use in plots."""
+    # --------------------------------------------------------
+    # Color palette
+    # --------------------------------------------------------
+    colors = [
+        "#1f77b4",
+        "#2ca02c",
+        "#9467bd",
+        "#8c564b",
+        "#8b2500",
+        "#d62728",
+        "#ff7f0e",
+        "#e377c2",
+        "#7f7f7f",
+        "#bcbd22",
+        "#225ea8",
+        "#17becf",
+        "#a52020",
+        "#e2725b",
+    ]
+    return colors
+
+
 def use_style(
     doc_fontsize=10.0,  # pt
     doc_textwidth="single",  # "single", "double", or float (inches)
@@ -103,25 +127,7 @@ def use_style(
         "legend.fontsize": base * 0.9,
     }
 
-    # --------------------------------------------------------
-    # Color palette
-    # --------------------------------------------------------
-    colors = [
-        "#1f77b4",
-        "#2ca02c",
-        "#9467bd",
-        "#8c564b",
-        "#8b2500",
-        "#d62728",
-        "#ff7f0e",
-        "#e377c2",
-        "#7f7f7f",
-        "#bcbd22",
-        "#225ea8",
-        "#17becf",
-        "#a52020",
-        "#e2725b",
-    ]
+    colors = get_colors()
 
     # --------------------------------------------------------
     # Apply rcParams
