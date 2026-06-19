@@ -78,6 +78,7 @@ def use_style(
     aspect=0.75,
     dpi=300,
     format="png",
+    colors=None,
     **rcparams,
 ):
     """Set matplotlib style with font scaling.
@@ -89,6 +90,7 @@ def use_style(
         aspect (float, optional): Height / width ratio. Defaults to 0.75.
         dpi (int, optional): Dots per inch, figure quality. Defaults to 300.
         format (str, optional): _description_. Defaults to "png".
+        colors (list, optional): List of colors to use for the plots. Defaults to None, which means the default colors, which can be checked with get_colors() are used.
         **rcparams: overwrites of matplotlib rcParams. Replace underscores with dots, e.g. axes_grid=False will update rcParams["axes.grid"] = False
 
     Raises:
@@ -127,7 +129,8 @@ def use_style(
         "legend.fontsize": base * 0.9,
     }
 
-    colors = get_colors()
+    if colors is None:
+        colors = get_colors()
 
     # --------------------------------------------------------
     # Apply rcParams

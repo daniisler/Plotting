@@ -81,7 +81,9 @@ def errorbar(ax, x, y, yerr, label=None, **kwargs):
 # ============================================================
 
 
-def label(ax, xlabel=None, ylabel=None, title=None, **kwargs):
+def label(
+    ax, xlabel=None, ylabel=None, title=None, x_rotation=0, y_rotation=0, **kwargs
+):
     """Set axis labels and title."""
     if xlabel:
         ax.set_xlabel(xlabel, **kwargs)
@@ -89,6 +91,14 @@ def label(ax, xlabel=None, ylabel=None, title=None, **kwargs):
         ax.set_ylabel(ylabel, **kwargs)
     if title:
         ax.set_title(title, **kwargs)
+    if x_rotation != 0:
+        ax.tick_params(axis="x", labelrotation=x_rotation)
+        for label in ax.get_xticklabels():
+            label.set_ha("right")
+    if y_rotation != 0:
+        ax.tick_params(axis="y", labelrotation=y_rotation)
+        for label in ax.get_yticklabels():
+            label.set_ha("right")
 
 
 def legend(ax, loc="best", **kwargs):
@@ -98,11 +108,21 @@ def legend(ax, loc="best", **kwargs):
         ax.legend(loc=loc, **kwargs)
 
 
-def annotate_subplots(axs, x=-0.05, y=1.05):
+def annotate_subplots(
+    axs, x=-0.05, y=1.05, capicalize=False, add_before="", add_after="", **kwargs
+):
     """Add subplot labels (a, b, c, ...)"""
     axs = np.atleast_1d(axs)
     for i, ax in enumerate(axs.flatten()):
-        ax.text(x, y, string.ascii_lowercase[i], transform=ax.transAxes, weight="bold")
+        label = string.ascii_uppercase[i] if capicalize else string.ascii_lowercase[i]
+        ax.text(
+            x,
+            y,
+            add_before + label + add_after,
+            transform=ax.transAxes,
+            weight="bold",
+            **kwargs,
+        )
 
 
 def finish(ax):
