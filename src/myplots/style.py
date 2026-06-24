@@ -143,7 +143,7 @@ def use_style(
             "figure.autolayout": True,
             # Fonts
             "font.family": "sans-serif",
-            "font.sans-serif": ["Arial"],
+            "font.sans-serif": ["DejaVu Sans", "Liberation Sans", "Arial"],
             # Axes
             "axes.labelweight": "bold",
             "axes.titleweight": "bold",
