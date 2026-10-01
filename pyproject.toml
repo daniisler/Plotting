@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "myplots"
-version = "0.1.3"
+version = "0.1.4"
 description = "Lightweight plotting utilities for consistent well-readable matplotlib figures"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -32,3 +32,13 @@ dependencies = [
 Repository = "https://github.com/daniisler/Plotting"
 Homepage = "https://github.com/daniisler/Plotting"
 Issues = "https://github.com/daniisler/Plotting/issues"
+
+[tool.pyright]
+pythonVersion = "3.12"
+
+[tool.pylint.TYPECHECK]
+ignored-modules = [
+    "cycler",
+    "numpy",
+    "matplotlib",
+]

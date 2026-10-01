@@ -1,5 +1,6 @@
 import matplotlib as mpl
 from cycler import cycler
+from typing import Tuple, List
 
 # ============================================================
 # STYLE SETUP (call once at program start)
@@ -7,12 +8,12 @@ from cycler import cycler
 
 
 def _compute_figsize(
-    nrows=1,
-    ncols=1,
-    fig_width="single",  # "single", "double", or float (inches)
-    aspect=0.75,  # height / width
-    scale_multi_cols=0.8,
-) -> tuple[float, float]:
+    nrows: int = 1,
+    ncols: int = 1,
+    fig_width: str | float = "single",  # "single", "double", or float (inches)
+    aspect: float = 0.75,  # height / width
+    scale_multi_cols: float = 0.8,
+) -> Tuple[float, float]:
     """Compute standard figure widths which rescales when multiple subplots are present
 
     Args:
@@ -26,7 +27,7 @@ def _compute_figsize(
         ValueError: If the fig_width is invalid.
 
     Returns:
-        tuple[float, float]: (width_in, height_in) in inches
+        Tuple[float, float]: (width_in, height_in) in inches
     """
     if fig_width == "single":
         width_in = 3.4
@@ -39,15 +40,15 @@ def _compute_figsize(
 
     # Rescale if multiple subplots are present
     if ncols > 1:
-        ncols *= scale_multi_cols
-        nrows *= scale_multi_cols
-    height_in = width_in * nrows * aspect
-    width_in = width_in * ncols
+        height_in = width_in * nrows * aspect * scale_multi_cols
+        width_in = width_in * scale_multi_cols
+    else:
+        height_in = width_in * nrows * aspect
 
     return width_in, height_in
 
 
-def get_colors():
+def get_colors() -> List[str]:
     """Get a list of colors for use in plots."""
     # --------------------------------------------------------
     # Color palette
@@ -72,15 +73,15 @@ def get_colors():
 
 
 def use_style(
-    doc_fontsize=10.0,  # pt
-    doc_textwidth="single",  # "single", "double", or float (inches)
-    fig_width="single",  # "single", "double", or float (inches)
-    aspect=0.75,
-    dpi=300,
-    format="png",
-    colors=None,
+    doc_fontsize: float = 10.0,  # pt
+    doc_textwidth: str | float = "single",  # "single", "double", or float (inches)
+    fig_width: str | float = "single",  # "single", "double", or float (inches)
+    aspect: float = 0.75,
+    dpi: int = 300,
+    format: str = "png",
+    colors: List[str] | None = None,
     **rcparams,
-):
+) -> None:
     """Set matplotlib style with font scaling.
 
     Args:
@@ -187,3 +188,5 @@ def use_style(
     # Apply overwrites from rcparams, by replacing _ with .
     overwrites = {k.replace("_", "."): v for k, v in rcparams.items()}
     mpl.rcParams.update(overwrites)
+
+bbox={"boxstyle": "round", "facecolor": "wheat", "alpha": 0.8}
