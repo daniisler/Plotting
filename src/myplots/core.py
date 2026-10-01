@@ -1,14 +1,14 @@
 import re
 import string
-from typing import Tuple, List
-from matplotlib.collections import PathCollection
-from matplotlib.container import ErrorbarContainer
 from pathlib import Path
+from typing import List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.figure import Figure
 from matplotlib.axes import Axes
+from matplotlib.collections import PathCollection
+from matplotlib.container import ErrorbarContainer
+from matplotlib.figure import Figure
 
 from .style import _compute_figsize
 
@@ -69,17 +69,28 @@ def show(*args, **kwargs) -> None:
 # ============================================================
 
 
-def line(ax: Axes, x: np.ndarray, y: np.ndarray, label: str | None = None, **kwargs) -> list:
+def line(
+    ax: Axes, x: np.ndarray, y: np.ndarray, label: str | None = None, **kwargs
+) -> list:
     """Standard line plot."""
     return ax.plot(x, y, label=label, **kwargs)
 
 
-def scatter(ax: Axes, x: np.ndarray, y: np.ndarray, label: str | None = None, **kwargs) -> PathCollection:
+def scatter(
+    ax: Axes, x: np.ndarray, y: np.ndarray, label: str | None = None, **kwargs
+) -> PathCollection:
     """Scatter plot."""
     return ax.scatter(x, y, label=label, **kwargs)
 
 
-def errorbar(ax: Axes, x: np.ndarray, y: np.ndarray, yerr: np.ndarray, label: str | None = None, **kwargs) -> ErrorbarContainer:
+def errorbar(
+    ax: Axes,
+    x: np.ndarray,
+    y: np.ndarray,
+    yerr: np.ndarray,
+    label: str | None = None,
+    **kwargs,
+) -> ErrorbarContainer:
     """Errorbar plot with sensible defaults."""
     kwargs.setdefault("capsize", 3)
     return ax.errorbar(x, y, yerr=yerr, label=label, **kwargs)
@@ -91,7 +102,13 @@ def errorbar(ax: Axes, x: np.ndarray, y: np.ndarray, yerr: np.ndarray, label: st
 
 
 def label(
-    ax: Axes, xlabel: str | None = None, ylabel: str | None = None, title: str | None = None, x_rotation: int = 0, y_rotation: int = 0, **kwargs
+    ax: Axes,
+    xlabel: str | None = None,
+    ylabel: str | None = None,
+    title: str | None = None,
+    x_rotation: int = 0,
+    y_rotation: int = 0,
+    **kwargs,
 ):
     """Set axis labels and title."""
     if xlabel:
@@ -118,10 +135,18 @@ def legend(ax: Axes, loc: str = "best", **kwargs):
 
 
 def annotate_subplots(
-    axs: Axes | List | np.ndarray, x: float = -0.05, y: float = 1.05, capicalize: bool = False, add_before: str = "", add_after: str = "", **kwargs
+    axs: Axes | List | np.ndarray,
+    x: float = -0.05,
+    y: float = 1.05,
+    capicalize: bool = False,
+    add_before: str = "",
+    add_after: str = "",
+    **kwargs,
 ):
     """Add subplot labels (a, b, c, ...)"""
-    axes = np.atleast_1d(axs) if isinstance(axs, (list, np.ndarray)) else np.array([axs])  # type: np.ndarray
+    axes = (
+        np.atleast_1d(axs) if isinstance(axs, (list, np.ndarray)) else np.array([axs])
+    )  # type: np.ndarray
     for i, ax in enumerate(axes.flatten()):
         label = string.ascii_uppercase[i] if capicalize else string.ascii_lowercase[i]
         ax.text(
@@ -171,7 +196,9 @@ def plot_parity(
     ax: Axes,
     x: np.ndarray,
     y: np.ndarray,
-    xy_annotations: list[Tuple[str, Tuple[float, float], Tuple[float, float]]] | None = None,
+    xy_annotations: (
+        list[Tuple[str, Tuple[float, float], Tuple[float, float]]] | None
+    ) = None,
     add_xy: bool = True,
     xy_color: str = "black",
     xy_label: str = "$x = y$",

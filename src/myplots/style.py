@@ -1,6 +1,7 @@
+from typing import List, Tuple
+
 import matplotlib as mpl
 from cycler import cycler
-from typing import Tuple, List
 
 # ============================================================
 # STYLE SETUP (call once at program start)
@@ -189,4 +190,5 @@ def use_style(
     overwrites = {k.replace("_", "."): v for k, v in rcparams.items()}
     mpl.rcParams.update(overwrites)
 
-bbox={"boxstyle": "round", "facecolor": "wheat", "alpha": 0.8}
+
+bbox = {"boxstyle": "round", "facecolor": "wheat", "alpha": 0.8}
